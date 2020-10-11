@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RespuestaMDB, PeliculaDetalle, RespuestaCredits, Generos, Genero } from '../Interfaces/interfaces';
 import { environment } from '../../environments/environment';
-import { resolve } from 'dns';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;

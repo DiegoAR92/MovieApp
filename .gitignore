@@ -29,3 +29,7 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/android
+/.gradle
+.zsh_profile
+capacitor.config.json
