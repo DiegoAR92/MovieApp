@@ -9,7 +9,10 @@ import { PeliculaDetalle } from '../Interfaces/interfaces';
 export class DataLocalService {
 
   constructor(private storage: Storage,
-    private toastCtrl: ToastController) { }
+    private toastCtrl: ToastController) { 
+      this.cargarFavoritos();
+
+    }
   peliculas:PeliculaDetalle[] = [];
 
   async presentToast(message:string) {
@@ -32,7 +35,6 @@ guardarPelicula(pelicula: PeliculaDetalle){
     }
   }
 
-
   if(existe){
 
     this.peliculas = this.peliculas.filter(peli => peli.id !== pelicula.id);
@@ -44,15 +46,29 @@ guardarPelicula(pelicula: PeliculaDetalle){
     mensaje = "Añadido a favoritos";
 
   }
-
-
-
-  this.peliculas.push(pelicula);
-  
   console.log(this.peliculas);
   
-  this.storage.set('pelicula',this.peliculas);
+  this.storage.set('peliculas',this.peliculas);
   this.presentToast(mensaje);
+
+  return !existe;
+}
+
+async cargarFavoritos(){
+  
+  const peliculas = await this.storage.get('peliculas')
+
+  this.peliculas = peliculas || [];
+  
+  return this.peliculas;
+}
+
+async existePelicula(id){
+
+  await this.cargarFavoritos();
+  const existe = this.peliculas.find(peli => peli.id === id);
+
+  return (existe) ? true : false;
 
 }
 

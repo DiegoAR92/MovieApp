@@ -104,3 +104,18 @@ export interface Cast {
   order: number;
   profile_path: string;
 }
+
+
+export interface Generos {
+  genres: Genero[];
+}
+
+export interface Genero {
+  id: number;
+  name: string;
+}
+
+export interface PeliculaGenero{
+  genero:string,
+  peliculas:PeliculaDetalle[]
+}
