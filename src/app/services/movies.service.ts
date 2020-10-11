@@ -55,4 +55,8 @@ export class MoviesService {
     return this.ejecutarQuery<RespuestaCredits>(`/movie/${id}/credits?a=1`)
   }
   
+  getBuscarPelicula(pelicula:string){
+    return this.ejecutarQuery<RespuestaMDB>(`/search/movie?query=${pelicula}`)
+  }
+
 }
