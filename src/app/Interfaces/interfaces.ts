@@ -23,31 +23,31 @@ export interface Pelicula {
 }
 
 export interface PeliculaDetalle {
-  adult: boolean;
-  backdrop_path: string;
-  belongs_to_collection: Belongstocollection;
-  budget: number;
-  genres: Genre[];
-  homepage: string;
-  id: number;
-  imdb_id: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  production_companies: Productioncompany[];
-  production_countries: Productioncountry[];
-  release_date: string;
-  revenue: number;
-  runtime: number;
-  spoken_languages: Spokenlanguage[];
-  status: string;
-  tagline: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
+  adult?: boolean;
+  backdrop_path?: string;
+  belongs_to_collection?: Belongstocollection;
+  budget?: number;
+  genres?: Genre[];
+  homepage?: string;
+  id?: number;
+  imdb_id?: string;
+  original_language?: string;
+  original_title?: string;
+  overview?: string;
+  popularity?: number;
+  poster_path?: string;
+  production_companies?: Productioncompany[];
+  production_countries?: Productioncountry[];
+  release_date?: string;
+  revenue?: number;
+  runtime?: number;
+  spoken_languages?: Spokenlanguage[];
+  status?: string;
+  tagline?: string;
+  title?: string;
+  video?: boolean;
+  vote_average?: number;
+  vote_count?: number;
 }
 
 interface Spokenlanguage {
@@ -78,7 +78,7 @@ interface Belongstocollection {
   poster_path: string;
   backdrop_path: string;
 }
-interface RespuestaCredits {
+export interface RespuestaCredits {
   id: number;
   cast: Cast[];
   crew: Crew[];
@@ -94,7 +94,7 @@ interface Crew {
   profile_path?: string;
 }
 
-interface Cast {
+export interface Cast {
   cast_id: number;
   character: string;
   credit_id: string;

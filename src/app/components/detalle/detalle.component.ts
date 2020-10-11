@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
+import { PeliculaDetalle, Cast } from '../../Interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle',
@@ -9,21 +11,34 @@ import { MoviesService } from '../../services/movies.service';
 export class DetalleComponent implements OnInit {
 
   @Input() id;
+  peliculaDetalle: PeliculaDetalle = {};
+  actores: Cast[] = [];
+  oculto = 150;
 
-  constructor(private moviesService: MoviesService) { }
+    slideOptActores = {
+      spaceBetween: -5,
+      slidesPerView: 3.5,
+      freeMode: true,
+    };
+
+  constructor(private moviesService: MoviesService, private modalCtrl:ModalController) { }
 
   ngOnInit() {
+    console.log(this.id);
     this.moviesService.getPeliculaDetalle(this.id)
     .subscribe(resp =>{
-      console.log(resp);
+      this.peliculaDetalle = resp; 
+
     });
 
     this.moviesService.getActoresPelicula(this.id)
     .subscribe(resp =>{
-      console.log(resp);
+      this.actores = resp.cast;
     });
   }
 
-
+  regresar(){
+    this.modalCtrl.dismiss();
+  }
 
 }
